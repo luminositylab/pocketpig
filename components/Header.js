@@ -35,6 +35,7 @@ const Header = ({
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
+        marginTop: hp('3%')
     },
     level: {
         fontSize: 18,
@@ -44,16 +45,18 @@ const styles = StyleSheet.create({
     styleTitle: {
         color: '#3C885E',
         fontWeight: 'bold',
-        lineHeight: 27
+        lineHeight: 27,
+        fontSize: 18,
     },
     inRow: {
-        fontSize: 18,
         fontWeight: "700",
         lineHeight: 27,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginTop: hp('1.5%')
     },
     boldText: {
         fontWeight: '700',
+        fontSize: 18,
         lineHeight: 27
     }
 })
