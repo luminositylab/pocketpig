@@ -1,9 +1,15 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import LevelMap from './../assets/LevelMap.svg'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-export default function RenderLevelMap() {
+export default function RenderLevelMap({navigation}) {
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({headerShown: false});
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
       <LevelMap style={{
@@ -22,7 +28,7 @@ export default function RenderLevelMap() {
         right: 0,
         bottom: 0,
       }}
-      onPress={() => {console.log('button1')}}/>
+      onPress={() => {navigation.navigate('Level1')}}/>
       <TouchableOpacity style={{
         width: wp("27%"), 
         height: hp("11%"), 

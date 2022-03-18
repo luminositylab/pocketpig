@@ -4,9 +4,13 @@ import Header from './Header';
 import LevelDefinition from './LevelDefinition';
 import LevelQuestions from './LevelQuestions';
 
-const Level1 = () => {
+const Level1 = ({navigation}) => {
 
     const [isSubmitted, setisSubmitted] = useState(false)
+
+    React.useLayoutEffect(() => {
+        navigation.setOptions({headerShown: false});
+      }, [navigation]);
 
     const handleSubmit = () => {
         setisSubmitted(true)
