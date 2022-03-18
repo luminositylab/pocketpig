@@ -14,10 +14,10 @@ export default function App() {
     <View style={styles.container}>
       {/* <Text>Pocket Pig is ready for development! :)</Text> */}
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="RenderLevelMap">
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={Home} />          
           <Stack.Screen name="RenderLevelMap" component={RenderLevelMap} />
           <Stack.Screen name="Level1" component={Level1} />
-          <Stack.Screen name="Home" component={Home} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />

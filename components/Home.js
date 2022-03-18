@@ -5,7 +5,7 @@ const Home = () => {
   const today = new Date().toLocaleDateString();
 
   return (
-    <>
+    <View style={styles.container}>
       <View style={styles.header}>
         <Text style={{ fontSize: 18, textAlign: "center" }}>{today}</Text>
         <View style={styles.avatarSettings}>
@@ -49,11 +49,18 @@ const Home = () => {
           style={{ width: 40, height: 40 }}
         ></Image>
       </View>
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#E5E5E5",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 50,
+  },
   header: {
     width: 303,
     textAlign: "center",
