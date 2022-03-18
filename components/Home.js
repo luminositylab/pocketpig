@@ -1,4 +1,6 @@
 import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import { SvgUri } from "react-native-svg";
+import { AVATAR } from "../assets";
 
 const Home = () => {
   const today = new Date().toLocaleDateString();
@@ -8,13 +10,11 @@ const Home = () => {
       <View style={styles.header}>
         <Text style={{ fontSize: 18 }}>{today}</Text>
         <View style={styles.avatarSettings}>
-          <Image
-            style={styles.avatar}
-            source={require("../assets/avatar.svg")}
-          />
+          {/* <SvgUri width="100%" height="100%" uri="../assets/setting.svg" /> */}
+          <Image style={styles.avatar} source={AVATAR} />
           <Image
             style={styles.setting}
-            source={require("../assets/setting.svg")}
+            source={require("../assets/setting.png")}
           />
         </View>
       </View>
@@ -25,13 +25,13 @@ const Home = () => {
         </Text>
         <View style={styles.amountContainer}>
           <Image
-            source={require("../assets/coin.svg")}
+            source={require("../assets/coin.png")}
             style={{ width: 22, height: 22, marginRight: 5 }}
           ></Image>
           <Text style={{ fontSize: 18, paddingBottom: 2 }}>30,000</Text>
         </View>
         <ImageBackground
-          source={require("../assets/home-page-image.svg")}
+          source={require("../assets/home-page-image.png")}
           resizeMode="cover"
           style={styles.homeImage}
         ></ImageBackground>
@@ -39,15 +39,15 @@ const Home = () => {
 
       <View style={styles.footerTab}>
         <Image
-          source={require("../assets/game.svg")}
+          source={require("../assets/game.png")}
           style={{ width: 50, height: 40 }}
         ></Image>
         <Image
-          source={require("../assets/pig.svg")}
+          source={require("../assets/pig.png")}
           style={{ width: 50, height: 40 }}
         ></Image>
         <Image
-          source={require("../assets/chart.svg")}
+          source={require("../assets/chart.png")}
           style={{ width: 50, height: 40 }}
         ></Image>
       </View>
