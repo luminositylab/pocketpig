@@ -1,23 +1,20 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
-import Home from "./components/Home";
 
-export default function App() {
+const Home = () => {
   const today = new Date().toLocaleDateString();
 
   return (
-    <View style={styles.container}>
-      <Home></Home>
-      {/* <View style={styles.header}>
+    <>
+      <View style={styles.header}>
         <Text style={{ fontSize: 18 }}>{today}</Text>
         <View style={styles.avatarSettings}>
           <Image
             style={styles.avatar}
-            source={require("./assets/avatar.svg")}
+            source={require("../assets/avatar.svg")}
           />
           <Image
             style={styles.setting}
-            source={require("./assets/setting.svg")}
+            source={require("../assets/setting.svg")}
           />
         </View>
       </View>
@@ -28,13 +25,13 @@ export default function App() {
         </Text>
         <View style={styles.amountContainer}>
           <Image
-            source={require("./assets/coin.svg")}
+            source={require("../assets/coin.svg")}
             style={{ width: 22, height: 22, marginRight: 5 }}
           ></Image>
           <Text style={{ fontSize: 18, paddingBottom: 2 }}>30,000</Text>
         </View>
         <ImageBackground
-          source={require("./assets/home-page-image.svg")}
+          source={require("../assets/home-page-image.svg")}
           resizeMode="cover"
           style={styles.homeImage}
         ></ImageBackground>
@@ -42,31 +39,23 @@ export default function App() {
 
       <View style={styles.footerTab}>
         <Image
-          source={require("./assets/game.svg")}
+          source={require("../assets/game.svg")}
           style={{ width: 50, height: 40 }}
         ></Image>
         <Image
-          source={require("./assets/pig.svg")}
+          source={require("../assets/pig.svg")}
           style={{ width: 50, height: 40 }}
         ></Image>
         <Image
-          source={require("./assets/chart.svg")}
+          source={require("../assets/chart.svg")}
           style={{ width: 50, height: 40 }}
         ></Image>
-      </View> */}
-      <StatusBar style="auto" />
-    </View>
+      </View>
+    </>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#E5E5E5",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 50,
-  },
   header: {
     width: 303,
     textAlign: "center",
@@ -116,3 +105,5 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
   },
 });
+
+export default Home;
