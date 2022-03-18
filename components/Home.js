@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <>
       <View style={styles.header}>
-        <Text style={{ fontSize: 18 }}>{today}</Text>
+        <Text style={{ fontSize: 18, textAlign: "center" }}>{today}</Text>
         <View style={styles.avatarSettings}>
           {/* <SvgUri width="100%" height="100%" uri="../assets/setting.svg" /> */}
           <Image style={styles.avatar} source={AVATAR} />
@@ -44,11 +44,11 @@ const Home = () => {
         ></Image>
         <Image
           source={require("../assets/pig.png")}
-          style={{ width: 50, height: 40 }}
+          style={{ width: 40, height: 40 }}
         ></Image>
         <Image
           source={require("../assets/chart.png")}
-          style={{ width: 50, height: 40 }}
+          style={{ width: 40, height: 40 }}
         ></Image>
       </View>
     </>
