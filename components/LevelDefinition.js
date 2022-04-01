@@ -9,9 +9,16 @@ import SvgRenderTop from './SvgRenderTop';
 import SvgRenderBottom from './SvgRenderBottom';
 
 
-const LevelDefinition = ({
-    chapterTitle, handleSubmit
-}) => (
+
+export default function LevelDefinition ({
+    chapterTitle, handleSubmit, navigation
+}) {
+
+    React.useLayoutEffect(() => {
+        navigation.setOptions({headerShown: false});
+      }, [navigation]);
+ 
+return (
     <View>
         <Header level = {"Level 1"} chapterTitle = {"Savings"} chapterLine = {"To save or not to save"}/>
         <SvgRenderTop/>
@@ -52,7 +59,7 @@ const LevelDefinition = ({
                         width={wp("65%")}
                         height={hp("8%")}
                         borderRadius={30}
-                        onPress = {handleSubmit}
+                        onPress = {() => {navigation.navigate('Level1Questions')}}
                     >
                         <Text style = {styles.buttonText}>Got it!</Text>
                     </NeuButton>
@@ -61,7 +68,7 @@ const LevelDefinition = ({
         </View>
         <SvgRenderBottom/>
     </View>
-);
+)};
 
 const styles = StyleSheet.create({
     container: {
@@ -119,5 +126,3 @@ const styles = StyleSheet.create({
     }
 })
 
-
-export default LevelDefinition;
