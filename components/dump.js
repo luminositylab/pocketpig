@@ -5,12 +5,11 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import Svg, { Circle, Path, G, Rect, Defs } from "react-native-svg"
 import RadioButton from './RadioButton';
 import { NeuButton } from 'react-native-neu-element'
-
+// import SvgRenderTop from './SvgRenderTop';
 
 const PROP = [
 
     {
-        question: 'So, What is saving?',
         answerOptions: [
             {
                 key: 'key1',
@@ -30,11 +29,10 @@ const PROP = [
         ]
     },
     {
-        question: 'Why is savings important?',
         answerOptions: [
             {
                 key: 'key1',
-                text: "I don't want to save as it is not important to save",
+                text: 'It is not important',
                 ans: 'wrong'
             },
             {
@@ -50,7 +48,6 @@ const PROP = [
         ]
     },
     {
-        question: 'What is correct example of saving?',
         answerOptions: [
             {
                 key: 'key1',
@@ -75,39 +72,30 @@ const PROP = [
 
 
 
-export default function LevelQuestions ({
-    params, navigation
-}) 
+const LevelQuestions = ({
+    params,
+}) => 
 
 {
-    React.useLayoutEffect(() => {
-        navigation.setOptions({headerShown: false});
-    }, [navigation]);
-    
-    const [isAnswerCorrect, setisAnswerCorrect] = useState(false)
+    const [isFirstAnswerCorrect, setisFirstAnswerCorrect] = useState(false)
+    const [isSecondAnswerCorrect, setisSecondAnswerCorrect] = useState(false)
+    const [isThirdAnswerCorrect, setisThirdAnswerCorrect] = useState(false)
     const [isSubmitted, setisSubmitted] = useState(false)
-    const [isAttended, setisAttended] = useState(false)
-    const [quesNo, setquesNo] = useState(0) 
-    const [value, setValue] = useState(null)
 
-    const handleAnswers = (res, value) => {
-        setValue(value)
-        setisAttended(true)
-        setisAnswerCorrect(res.ans === 'right')
+    const handleAnswersOne = (res) => {
+        setisFirstAnswerCorrect(res.ans === 'right')
+    }
+
+    const handleAnswersTwo = (res) => {
+        setisSecondAnswerCorrect(res.ans === 'right')
+    }
+
+    const handleAnswersThree = (res) => {
+        setisThirdAnswerCorrect(res.ans === 'right')
     }
 
     const handleSubmit = () => {
-        if(quesNo >= (PROP.length-1)){
-            navigation.navigate('Greetings')         
-        }
-        else{
-            setValue(null)
-            setquesNo(quesNo+1)
-            setisAnswerCorrect(false)
-            setisAttended(false)
-        }
-        
-
+        setisSubmitted(true)
     }
 
     return (
@@ -139,26 +127,68 @@ export default function LevelQuestions ({
                 </View>
             </View>
             {/* {{alignItems: 'center', backgroundColor: '#E3E3E3', borderRadius : '30', width : wp('80%'), height : hp('20%')}}     */}
-            { !isSubmitted && <View style={styles.centered}>
+            {
+                !isFirstAnswerCorrect && <View> <View style={styles.centered}>
                     <View style = {styles.styleQueHeading}>
-                        <Text style = {styles.styleLearning}>{PROP[quesNo].question}</Text>
-                        {/* <Text style = {styles.chapterTitle}>saving?</Text> */}
+                        <Text style = {styles.styleLearning}>So, What is </Text>
+                        <Text style = {styles.chapterTitle}>saving?</Text>
                     </View>
                     <View style = {styles.styleQuestions}>
-                        <RadioButton value = {value} PROP={PROP[quesNo].answerOptions} handleAnswers = {handleAnswers} isAnswerCorrect = {isAnswerCorrect} />
+                        <RadioButton PROP={PROP[0].answerOptions} handleAnswers = {handleAnswersOne} isAnswerCorrect = {isFirstAnswerCorrect} />
                     </View>
-                </View>
+                </View><View style={{flexDirection: 'row', margin: hp("6%")}}>
+                {isFirstAnswerCorrect && <><View style={{ marginTop: hp("2%"), marginRight: wp("4%") }}>
+                            <Text style={{ color: "#3C885E", fontWeight: '400', fontSize: 14, lineHeight: 21 }}>That's correct! Great Job!</Text>
+                            <Text>Let's move on to the next question</Text>
+                        </View><View style={{ position: 'relative' }}>
+                                <NeuButton
+                                    color="#eef2f9"
+                                    width={wp("15%")}
+                                    height={hp("7%")}
+                                    borderRadius={100}
+                                    onPress={handleSubmit}
+                                >
+                                    <Svg
+                                        width={86}
+                                        height={86}
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <G filter="url(#a)">
+                                            <Rect
+                                                width={53}
+                                                height={53}
+                                                rx={26.5}
+                                                transform="matrix(1 0 0 -1 15 68)"
+                                                fill="#eef2f9" />
+                                        </G>
+                                        <Path
+                                            d="M28 39.5a1.5 1.5 0 0 0 0 3v-3Zm26.06 2.56a1.5 1.5 0 0 0 0-2.12l-9.545-9.547a1.5 1.5 0 1 0-2.122 2.122L50.88 41l-8.486 8.485a1.5 1.5 0 1 0 2.122 2.122l9.546-9.546ZM28 42.5h25v-3H28v3Z"
+                                            fill="#000" />
+                                        <Defs></Defs>
+                                    </Svg>
+
+                                </NeuButton>
+                            </View></>}
+            </View>
+            </View>
             }
-            <View style={{flexDirection: 'row', margin: hp("6%")}}>
-                { !isSubmitted && isAnswerCorrect && <View style={{marginTop: hp("2%"), marginRight: wp("4%")}}>
+            {
+                isFirstAnswerCorrect && !isSecondAnswerCorrect && <View style={styles.centered}>
+                    <View style = {styles.styleQueHeading}>
+                        <Text style = {styles.styleLearning}>Why is </Text>
+                        <Text style = {styles.chapterTitle}>savings?</Text>
+                        <Text style = {styles.styleLearning}>important?</Text>
+                    </View>
+                    <View style = {styles.styleQuestions}>
+                        <RadioButton PROP={PROP[1].answerOptions} handleAnswers = {handleAnswersTwo} isAnswerCorrect = {isSecondAnswerCorrect} />
+                    </View>
+                </View> && <View style={{flexDirection: 'row', margin: hp("6%")}}>
+                <View style={{marginTop: hp("2%"), marginRight: wp("4%")}}>
                     <Text style={{color: "#3C885E", fontWeight: '400', fontSize: 14, lineHeight: 21}}>That's correct! Great Job!</Text>
                     <Text>Let's move on to the next question</Text>
-                </View>}
-                { !isSubmitted && !isAnswerCorrect && isAttended && <View style={{marginTop: hp("2%"), marginRight: wp("4%")}}>
-                    <Text style={{color: "#FF0000", fontWeight: '400', fontSize: 14, lineHeight: 21}}>Oops! That's not quite right</Text>
-                    
-                </View>}
-                { !isSubmitted && isAnswerCorrect && <View style={{position: 'relative'}}>
+                </View>
+                <View style={{position: 'relative'}}>
                     <NeuButton
                         color="#eef2f9"
                         width={wp("15%")}
@@ -189,8 +219,10 @@ export default function LevelQuestions ({
                     </Svg>
                     
                     </NeuButton>
-                </View>}
+                </View>
             </View>
+            }
+            
         </View>
     );
 }
@@ -277,3 +309,5 @@ export default function LevelQuestions ({
         }
     })
 
+
+export default LevelQuestions;
