@@ -7,7 +7,7 @@ import Svg, { Circle, Path } from "react-native-svg"
 
 
 const Greetings = ({
-    params, navigation
+    navigation
 }) => 
 {
     React.useLayoutEffect(() => {

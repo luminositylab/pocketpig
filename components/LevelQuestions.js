@@ -5,7 +5,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import Svg, { Circle, Path, G, Rect, Defs } from "react-native-svg"
 import RadioButton from './RadioButton';
 import { NeuButton } from 'react-native-neu-element'
-import Greetings from './Greetings';
+
 
 const PROP = [
 
