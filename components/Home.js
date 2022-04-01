@@ -1,15 +1,41 @@
-import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
-import { AVATAR } from "../assets";
+import React, { useRef, useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ImageBackground,
+  Pressable,
+  Button,
+} from "react-native";
+// import Modal from "react-native-modal";
+import CongratsModal from "./modals/CongratsModal";
+import AvatarImg from "../assets/avatar.svg";
 
 const Home = () => {
   const today = new Date().toLocaleDateString();
+  const modaldRef = useRef();
+  // const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <View style={styles.container}>
+      <Pressable
+        style={[styles.button, styles.buttonOpen]}
+        onPress={() => modaldRef.current.onPress()}
+      >
+        <Text style={styles.textStyle}>Show Modal</Text>
+      </Pressable>
+
+      <View>
+        <CongratsModal ref={modaldRef} />
+      </View>
+
       <View style={styles.header}>
         <Text style={{ fontSize: 18, textAlign: "center" }}>{today}</Text>
         <View style={styles.avatarSettings}>
-          <Image style={styles.avatar} source={AVATAR} />
+          <View style={styles.avatar}>
+            <AvatarImg width="48" height="48" />
+          </View>
           <Image
             style={styles.setting}
             source={require("../assets/setting.png")}
@@ -108,6 +134,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 5,
     shadowOffset: { width: 0, height: 0 },
     shadowRadius: 10,
+  },
+  genericDisplay: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  modalStyle: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+    height: "70%",
+    width: "90%",
+    borderRadius: 44,
   },
 });
 
