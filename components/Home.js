@@ -9,10 +9,14 @@ import PigActiveImg from "../assets/pig-active.svg";
 import StatsImg from "../assets/stats.svg";
 import CubeImg from "../assets/cube.svg";
 
-const Home = () => {
+const Home = ({navigation}) => {
   const today = new Date().toLocaleDateString();
   const modaldRef = useRef();
   const totalCoins = "30,453";
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({headerShown: false});
+  }, [navigation]);
 
   return (
     <View style={styles.container}>
@@ -60,7 +64,7 @@ const Home = () => {
       <View style={styles.footerTab}>
         <BadgeImg></BadgeImg>
         <PigActiveImg></PigActiveImg>
-        <StatsImg></StatsImg>
+        <StatsImg onPress = {()=> {navigation.navigate('RenderLevelMap')}}></StatsImg>
       </View>
     </View>
   );
