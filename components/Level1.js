@@ -4,19 +4,15 @@ import LevelDefinition from './LevelDefinition';
 
 const Level1 = ({navigation}) => {
 
-    const [isSubmitted, setisSubmitted] = useState(false)
-
+    
     React.useLayoutEffect(() => {
         navigation.setOptions({headerShown: false});
       }, [navigation]);
 
-    const handleSubmit = () => {
-        setisSubmitted(true)
-    }
 
     return(
         <View>
-            <LevelDefinition navigation={navigation} chapterTitle = {"saving"} handleSubmit = {handleSubmit}/>
+            <LevelDefinition navigation={navigation} chapterTitle = {"saving"}/>
             {/* { isSubmitted && <LevelQuestions/>} */}
         </View>
     )

@@ -11,7 +11,7 @@ import SvgRenderBottom from './SvgRenderBottom';
 
 
 export default function LevelDefinition ({
-    chapterTitle, handleSubmit, navigation
+    chapterTitle, navigation
 }) {
 
     React.useLayoutEffect(() => {
