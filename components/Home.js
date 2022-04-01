@@ -15,7 +15,6 @@ import AvatarImg from "../assets/avatar.svg";
 const Home = () => {
   const today = new Date().toLocaleDateString();
   const modaldRef = useRef();
-  // const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <View style={styles.container}>
