@@ -1,53 +1,66 @@
-import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
-import { AVATAR } from "../assets";
+import React, { useRef, useState } from "react";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import CongratsModal from "./modals/CongratsModal";
+import AvatarImg from "../assets/avatar.svg";
+import SettingImg from "../assets/setting.svg";
+import HomePageImg from "../assets/home-page-image.svg";
+import BadgeImg from "../assets/badge.svg";
+import PigActiveImg from "../assets/pig-active.svg";
+import StatsImg from "../assets/stats.svg";
+import CubeImg from "../assets/cube.svg";
 
 const Home = () => {
   const today = new Date().toLocaleDateString();
+  const modaldRef = useRef();
+  const totalCoins = "30,453";
 
   return (
     <View style={styles.container}>
+      <View>
+        <CongratsModal ref={modaldRef} />
+      </View>
+
       <View style={styles.header}>
         <Text style={{ fontSize: 18, textAlign: "center" }}>{today}</Text>
         <View style={styles.avatarSettings}>
-          <Image style={styles.avatar} source={AVATAR} />
-          <Image
-            style={styles.setting}
-            source={require("../assets/setting.png")}
-          />
+          <View style={styles.avatar}>
+            <AvatarImg width="48" height="48" />
+          </View>
+          <Pressable
+            style={[styles.button, styles.buttonOpen]}
+            onPress={() => modaldRef.current.onPress()}
+          >
+            <Text style={styles.textStyle}>Show Modal</Text>
+          </Pressable>
+          <SettingImg></SettingImg>
         </View>
       </View>
 
-      <View>
+      <View style={styles.imageContainer}>
         <Text style={{ fontWeight: "bold", fontSize: 24, textAlign: "center" }}>
-          My Title
+          PocketPig
         </Text>
         <View style={styles.amountContainer}>
           <Image
             source={require("../assets/coin.png")}
             style={{ width: 22, height: 22, marginRight: 5 }}
           ></Image>
-          <Text style={{ fontSize: 18, paddingBottom: 2 }}>30,000</Text>
+          <Text style={{ fontSize: 18, paddingBottom: 2 }}>{totalCoins}</Text>
         </View>
-        <ImageBackground
-          source={require("../assets/home-page-image.png")}
-          resizeMode="cover"
+        <HomePageImg
+          width="388"
+          height="388"
           style={styles.homeImage}
-        ></ImageBackground>
+        ></HomePageImg>
+        <View style={styles.cubeContainer}>
+          <CubeImg></CubeImg>
+        </View>
       </View>
 
       <View style={styles.footerTab}>
-        <Image
-          source={require("../assets/game.png")}
-          style={{ width: 50, height: 40 }}
-        ></Image>
-        <Image
-          source={require("../assets/pig.png")}
-          style={{ width: 40, height: 40 }}
-        ></Image>
-        <Image
-          source={require("../assets/chart.png")}
-          style={{ width: 40, height: 40 }}
-        ></Image>
+        <BadgeImg></BadgeImg>
+        <PigActiveImg></PigActiveImg>
+        <StatsImg></StatsImg>
       </View>
     </View>
   );
@@ -78,9 +91,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: "gray",
   },
-  setting: {
-    height: 27,
-    width: 27,
+  imageContainer: {
+    position: "relative",
   },
   amountContainer: {
     flexDirection: "row",
@@ -90,9 +102,18 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   homeImage: {
-    width: 388,
-    height: 388,
     marginBottom: 50,
+  },
+  cubeContainer: {
+    position: "absolute",
+    backgroundColor: "#E8EBE9",
+    padding: 10,
+    borderRadius: 50,
+    shadowOpacity: 0.4,
+    shadowOffset: { width: 2, height: 2 },
+    shadowRadius: 5,
+    bottom: 100,
+    right: 30,
   },
   footerTab: {
     width: 335,
@@ -105,8 +126,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     paddingVertical: 10,
     shadowColor: "lightgray",
-    shadowOpacity: 5,
-    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.5,
+    shadowOffset: { width: 2, height: 2 },
     shadowRadius: 10,
   },
 });
