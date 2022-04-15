@@ -1,7 +1,13 @@
-import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import React from 'react';
+import { NavigationContainer } from "@react-navigation/native";
+import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity} from "react-native";
 import { AVATAR } from "../assets";
 
-const Home = () => {
+const Home = ({navigation}) => {
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({headerShown: false});
+  }, [navigation]);
   const today = new Date().toLocaleDateString();
 
   return (
@@ -36,10 +42,12 @@ const Home = () => {
       </View>
 
       <View style={styles.footerTab}>
-        <Image
-          source={require("../assets/game.png")}
-          style={{ width: 50, height: 40 }}
-        ></Image>
+        <TouchableOpacity onPress={() => {navigation.navigate('RenderLevelMap')}}>  
+          <Image
+            source={require("../assets/game.png")}
+            style={{ width: 50, height: 40 }}
+          ></Image>
+        </TouchableOpacity>
         <Image
           source={require("../assets/pig.png")}
           style={{ width: 40, height: 40 }}

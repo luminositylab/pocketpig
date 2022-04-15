@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import RenderLevelMap from "./components/RenderLevelMap";
 import Level1 from "./components/Level1";
 import Home from "./components/Home";
+import CollectingCoins from './components/Level1Game/CollectingCoins';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
@@ -12,7 +13,8 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <Text>Pocket Pig is ready for development! :)</Text> */}
+      <CollectingCoins />
+      {/* <Text>Pocket Pig is ready for development! :)</Text> 
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={Home} />          
@@ -20,6 +22,7 @@ export default function App() {
           <Stack.Screen name="Level1" component={Level1} />
         </Stack.Navigator>
       </NavigationContainer>
+      */}
       <StatusBar style="auto" />
     </View>
   );
