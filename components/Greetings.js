@@ -152,7 +152,7 @@ const Greetings = ({
                 width={wp("65%")}
                 height={hp("8%")}
                 borderRadius={30}
-                onPress = {() => {console.log("Enter screen name here");}}
+                onPress = {()=> {navigation.navigate('Scenario')}}
             >
                 <Text style = {styles.buttonText}>Got it!</Text>
             </NeuButton>

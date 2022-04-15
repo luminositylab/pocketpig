@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LevelQuestions from "./components/LevelQuestions";
 import Greetings from "./components/Greetings";
+import Scenario from "./components/Scenario";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ export default function App() {
           <Stack.Screen name="Level1" component={Level1} />
           <Stack.Screen name="Level1Questions" component={LevelQuestions} />
           <Stack.Screen name="Greetings" component={Greetings} />
+          <Stack.Screen name="Scenario" component={Scenario} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
