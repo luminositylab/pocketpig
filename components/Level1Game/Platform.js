@@ -8,8 +8,8 @@ const Platform = ({ body}) => {
     return (
       <PlatSVG style={{
         position: 'absolute',
-        left: x-60,
-        top: y,
+        left: x-70,
+        top: y-30,
       }}/>
     );
   };

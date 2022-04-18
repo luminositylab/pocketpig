@@ -1,4 +1,4 @@
-import Coinsvg from './../../assets/coin.svg';
+import Coinsvg from './../../assets/coins/negativefiftyCoin.svg';
 import React, { Component } from "react";
 
 const GAME_WIDTH = 650;
@@ -7,7 +7,7 @@ const GAME_HEIGHT = 340;
 const BODY_DIAMETER = Math.trunc(Math.max(GAME_WIDTH, GAME_HEIGHT) * 0.05);
 const BORDER_WIDTH = Math.trunc(BODY_DIAMETER * 0.1);
 
-const Coin = ({body}) => {
+const NegativeFiftyCoin = ({body}) => {
     const { position } = body;
 
     const x = position.x - BODY_DIAMETER / 2;
@@ -24,4 +24,4 @@ const Coin = ({body}) => {
     );
   };
   
-  export default Coin;
+  export default NegativeFiftyCoin;

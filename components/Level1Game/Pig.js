@@ -12,7 +12,7 @@ const Pig = ({ body, size, xAdjustment, yAdjustment}) => {
     return (
       <DraggablePig style={{
         position: "absolute",
-        left: x,
+        left: x-50,
         top: y,
         width: width,
         height: height,
