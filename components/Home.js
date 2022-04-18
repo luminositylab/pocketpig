@@ -1,17 +1,7 @@
-<<<<<<< HEAD
-import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
-import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity} from "react-native";
+import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity, Pressable} from "react-native";
 import { AVATAR } from "../assets";
-
-const Home = ({navigation}) => {
-
-  React.useLayoutEffect(() => {
-    navigation.setOptions({headerShown: false});
-  }, [navigation]);
-=======
 import React, { useRef, useState } from "react";
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import CongratsModal from "./modals/CongratsModal";
 import AvatarImg from "../assets/avatar.svg";
 import SettingImg from "../assets/setting.svg";
@@ -22,7 +12,7 @@ import StatsImg from "../assets/stats.svg";
 import CubeImg from "../assets/cube.svg";
 
 const Home = ({navigation}) => {
->>>>>>> bed4b48bf97a2979f85e9e7cbee98e7564af3f32
+
   const today = new Date().toLocaleDateString();
   const modaldRef = useRef();
   const totalCoins = "30,453";
@@ -75,7 +65,7 @@ const Home = ({navigation}) => {
       </View>
 
       <View style={styles.footerTab}>
-<<<<<<< HEAD
+
         <TouchableOpacity onPress={() => {navigation.navigate('RenderLevelMap')}}>  
           <Image
             source={require("../assets/game.png")}
@@ -90,11 +80,11 @@ const Home = ({navigation}) => {
           source={require("../assets/chart.png")}
           style={{ width: 40, height: 40 }}
         ></Image>
-=======
+
         <BadgeImg></BadgeImg>
         <PigActiveImg></PigActiveImg>
         <StatsImg onPress = {()=> {navigation.navigate('RenderLevelMap')}}></StatsImg>
->>>>>>> bed4b48bf97a2979f85e9e7cbee98e7564af3f32
+
       </View>
     </View>
   );

@@ -14,17 +14,18 @@ import FiftyCoin from './FiftyCoin';
 import NegativeFiftyCoin from './NegativeFiftyCoin';
 import TwentyFiveCoin from './TwentyFiveCoin';
 import FiveCoin from './FIveCoin';
+import { createNavigationContainerRef } from '@react-navigation/native';
+export const navigation = createNavigationContainerRef()
 
 const BALL_SIZE = 40;
 const PLANK_HEIGHT = 10;
 const PLANK_WIDTH = 50;
-const BORDER = 15;
 
 const pigSettings = {
   isStatic: true
 };
 const coinSettings = {
-  inertia: 10,
+  inertia: 6,
   friction: 0,
   frictionStatic: 0,
   frictionAir: 0,
@@ -149,9 +150,6 @@ Matter.World.add(world, [
 ]);
 
 export default class CollectingCoins extends PureComponent {
-  static navigationOptions = {
-    header: null
-  };
 
   state = {
     myScore: 0,
@@ -191,7 +189,6 @@ export default class CollectingCoins extends PureComponent {
   }
   
   componentDidMount() {
-
       Matter.Sleeping.set(coin1, true);
       Matter.Sleeping.set(coin2, true);
       Matter.Sleeping.set(coin3, true);
@@ -412,6 +409,17 @@ export default class CollectingCoins extends PureComponent {
         <Text style={[{marginBottom: hp('7%'), fontWeight: '100', fontSize: 15}, this.state.thirdHistory >=0 ? {color: '#3C885E'} : {color: '#FC8476'}]}>
           {this.state.thirdHistory == 0 ? null : '$'+this.state.thirdHistory.toFixed(2)}
         </Text>
+        <TouchableOpacity onPress={() => {
+        if(this.state.myScore > 0.5){
+          this.props.navigation.navigate('Scenario')
+        }else{
+          this.props.navigation.navigate('Greetings')
+        }
+      }}>
+        <Text style={{alignSelf: 'center', marginBottom: hp('3%')}}>
+          {this.state.myScore > 0.5 ? 'continue': 'go back'}
+        </Text>
+      </TouchableOpacity>
       </View>
       </>
     );

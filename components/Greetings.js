@@ -152,7 +152,7 @@ const Greetings = ({
                 width={wp("65%")}
                 height={hp("8%")}
                 borderRadius={30}
-                onPress = {()=> {navigation.navigate('Scenario')}}
+                onPress = {()=> {navigation.navigate('CollectingCoins')}}
             >
                 <Text style = {styles.buttonText}>Got it!</Text>
             </NeuButton>
