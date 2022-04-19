@@ -6,11 +6,6 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 
 export default function RenderLevelMap({navigation, route}) {
 
-  useEffect(() => {
-    console.log(route.params["levelInformation"][route.params["currentLevel"]-1]["level"])
-
-  }, [])
-
   React.useLayoutEffect(() => {
     navigation.setOptions({headerShown: false});
   }, [navigation]);

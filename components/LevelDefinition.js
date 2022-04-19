@@ -14,9 +14,6 @@ export default function LevelDefinition ({
     navigation, route
 }) {
 
-    useEffect(() => {
-        console.log(route.params["currentLevel"]);
-    }, [])
 
     React.useLayoutEffect(() => {
         navigation.setOptions({headerShown: false});
