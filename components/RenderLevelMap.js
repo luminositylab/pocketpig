@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import LevelMap from './../assets/LevelMap.svg'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-export default function RenderLevelMap({navigation}) {
+export default function RenderLevelMap({navigation, route}) {
+
+  useEffect(() => {
+    console.log(route.params["levelInformation"][route.params["currentLevel"]-1]["level"])
+
+  }, [])
 
   React.useLayoutEffect(() => {
     navigation.setOptions({headerShown: false});
@@ -28,7 +33,8 @@ export default function RenderLevelMap({navigation}) {
         right: 0,
         bottom: 0,
       }}
-      onPress={() => {navigation.navigate('Level1')}}/>
+      onPress={() => {navigation.navigate({ name: 'LevelDefinition', params: {currentLevel: route.params["currentLevel"], levelInformation: route.params["levelInformation"]}} )}}
+      />
       <TouchableOpacity style={{
         width: wp("27%"), 
         height: hp("11%"), 

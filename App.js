@@ -9,10 +9,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LevelQuestions from "./components/LevelQuestions";
 import Greetings from "./components/Greetings";
 import Scenario from "./components/Scenario";
+import LevelDefinition from "./components/LevelDefinition";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  
+
   return (
     <View style={styles.container}>
       {/* <Text>Pocket Pig is ready for development! :)</Text> */}
@@ -20,8 +24,8 @@ export default function App() {
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="RenderLevelMap" component={RenderLevelMap} />
-          <Stack.Screen name="Level1" component={Level1} />
-          <Stack.Screen name="Level1Questions" component={LevelQuestions} />
+          <Stack.Screen name="LevelDefinition" component={LevelDefinition} />
+          <Stack.Screen name="LevelQuestions" component={LevelQuestions} />
           <Stack.Screen name="Greetings" component={Greetings} />
           <Stack.Screen name="Scenario" component={Scenario} />
         </Stack.Navigator>
