@@ -1,5 +1,7 @@
+import { NavigationContainer } from "@react-navigation/native";
+import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity, Pressable} from "react-native";
+import { AVATAR } from "../assets";
 import React, { useRef, useState } from "react";
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import CongratsModal from "./modals/CongratsModal";
 import AvatarImg from "../assets/avatar.svg";
 import SettingImg from "../assets/setting.svg";
@@ -146,6 +148,22 @@ const Home = ({navigation}) => {
       </View>
 
       <View style={styles.footerTab}>
+
+        <TouchableOpacity onPress={() => {navigation.navigate('RenderLevelMap')}}>  
+          <Image
+            source={require("../assets/game.png")}
+            style={{ width: 50, height: 40 }}
+          ></Image>
+        </TouchableOpacity>
+        <Image
+          source={require("../assets/pig.png")}
+          style={{ width: 40, height: 40 }}
+        ></Image>
+        <Image
+          source={require("../assets/chart.png")}
+          style={{ width: 40, height: 40 }}
+        ></Image>
+
         <BadgeImg></BadgeImg>
         <PigActiveImg></PigActiveImg>
         <StatsImg onPress = {()=> {navigation.navigate({name: 'RenderLevelMap', params: {currentLevel: currentLevel, levelInformation: levelInformation}})}}></StatsImg>

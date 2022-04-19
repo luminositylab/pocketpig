@@ -6,6 +6,7 @@ import RenderLevelMap from "./components/RenderLevelMap";
 import Level1 from "./components/Level1";
 import Home from "./components/Home";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import CollectingCoins from "./components/Level1Game/CollectingCoins";
 import LevelQuestions from "./components/LevelQuestions";
 import Greetings from "./components/Greetings";
 import Scenario from "./components/Scenario";
@@ -27,7 +28,9 @@ export default function App() {
           <Stack.Screen name="LevelDefinition" component={LevelDefinition} />
           <Stack.Screen name="LevelQuestions" component={LevelQuestions} />
           <Stack.Screen name="Greetings" component={Greetings} />
+          <Stack.Screen options={{headerShown: false}} name="CollectingCoins" component={CollectingCoins} />
           <Stack.Screen name="Scenario" component={Scenario} />
+          
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
