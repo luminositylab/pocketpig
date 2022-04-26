@@ -3,7 +3,6 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import RenderLevelMap from "./components/RenderLevelMap";
-import Level1 from "./components/Level1";
 import Home from "./components/Home";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CollectingCoins from "./components/Level1Game/CollectingCoins";
@@ -11,6 +10,7 @@ import LevelQuestions from "./components/LevelQuestions";
 import Greetings from "./components/Greetings";
 import Scenario from "./components/Scenario";
 import LevelDefinition from "./components/LevelDefinition";
+import SavingsDashboard from "./components/SavingsDashboard";
 
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +30,7 @@ export default function App() {
           <Stack.Screen name="Greetings" component={Greetings} />
           <Stack.Screen options={{headerShown: false}} name="CollectingCoins" component={CollectingCoins} />
           <Stack.Screen name="Scenario" component={Scenario} />
-          
+          <Stack.Screen name="SavingsDashboard" component={SavingsDashboard} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />

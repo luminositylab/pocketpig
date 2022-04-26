@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Header from './Header';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -8,70 +8,6 @@ import { NeuButton } from 'react-native-neu-element'
 import Two from '../assets/twoNo.svg'
 import NextQue from '../assets/nextQue.svg'
 
-const PROP = [
-
-    {
-        question: 'So, What is saving?',
-        answerOptions: [
-            {
-                key: 'key1',
-                text: 'Using your money to buy goods and services',
-                ans: 'wrong'
-            },
-            {
-                key: 'key2',
-                text: 'Putting your money away so you can spend it later',
-                ans: 'right'
-            },
-            {
-                key: 'key3',
-                text: 'Finding a $5 bill while going to school',
-                ans: 'wrong'
-            },
-        ]
-    },
-    {
-        question: 'Why is savings important?',
-        answerOptions: [
-            {
-                key: 'key1',
-                text: "I don't want to save as it is not important to save",
-                ans: 'wrong'
-            },
-            {
-                key: 'key2',
-                text: 'So you can have money for future purchases or emergencies',
-                ans: 'right'
-            },
-            {
-                key: 'key3',
-                text: 'So you can have more money in your bank account',
-                ans: 'wrong'
-            },
-        ]
-    },
-    {
-        question: 'What is correct example of saving?',
-        answerOptions: [
-            {
-                key: 'key1',
-                text: 'Spending all your allowance right away',
-                ans: 'wrong'
-            },
-            {
-                key: 'key2',
-                text: 'Putting aside some of your allowance over time',
-                ans: 'wrong'
-            },
-            {
-                key: 'key3',
-                text: 'Giving some of your allowance to your friends',
-                ans: 'right'
-            },
-        ]
-    }
-
-];
 
 
 
@@ -90,9 +26,7 @@ export default function LevelQuestions ({
     const [quesNo, setquesNo] = useState(0) 
     const [value, setValue] = useState(null)
     
-    useEffect(() => {
-        console.log(route.params["levelInformation"][route.params["currentLevel"]-1]["mcq"][0])
-    }, [])
+    
 
     const handleAnswers = (res, value) => {
         setValue(value)

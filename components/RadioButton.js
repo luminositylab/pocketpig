@@ -11,8 +11,6 @@ export default class RadioButton extends Component {
 	// };
 	render() {
 		const {value, PROP, handleAnswers, isAnswerCorrect } = this.props;
-		// const { value } = this.state;
-		
 		return (
 			<View>
 				{PROP.map(res => {
@@ -51,12 +49,13 @@ export default class RadioButton extends Component {
 const styles = StyleSheet.create({
 	container: {
         
+		display: 'flex',
         marginBottom: 35,
         // alignItems: 'center', 
         flexDirection: 'row',
-		justifyContent: 'space-between',
 	},
     radioText: {
+		textAlign: 'left',
         marginLeft: wp('3%'),
         marginRight: wp('13%'),
         fontSize: 18,

@@ -174,6 +174,7 @@ export default class CollectingCoins extends PureComponent {
       return entities;
     };
 
+    
     this.movePig = (entities, { touches }) => {
       let move = touches.find(y => y.type === "move");
       if (move) {
@@ -189,6 +190,11 @@ export default class CollectingCoins extends PureComponent {
   }
   
   componentDidMount() {
+
+    console.log("Mounted!!");
+    
+
+      
       Matter.Sleeping.set(coin1, true);
       Matter.Sleeping.set(coin2, true);
       Matter.Sleeping.set(coin3, true);
@@ -411,9 +417,9 @@ export default class CollectingCoins extends PureComponent {
         </Text>
         <TouchableOpacity onPress={() => {
         if(this.state.myScore > 0.5){
-          this.props.navigation.navigate('Scenario')
+          this.props.navigation.navigate({name: 'Scenario', params: {currentLevel: this.props.route.params["currentLevel"], levelInformation: this.props.route.params["levelInformation"]}})
         }else{
-          this.props.navigation.navigate('Greetings')
+          this.props.navigation.navigate({ name: 'Greetings', params: {currentLevel: this.props.route.params["currentLevel"], levelInformation: this.props.route.params["levelInformation"]}})
         }
       }}>
         <Text style={{alignSelf: 'center', marginBottom: hp('3%')}}>

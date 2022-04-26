@@ -7,7 +7,7 @@ import ChooseLand from './ChooseLand';
 import LevelCompleteModal from './modals/LevelCompleteModal';
 
 const Scenario = ({
-    navigation,
+    navigation, route
 }) => {
     
     const modaldRef = useRef();
@@ -17,7 +17,17 @@ const Scenario = ({
     }, [navigation]);
 
     const [land, setLand] = useState("")
-    
+    const [isClaimed, setIsCalimed] = useState(false)
+
+    // useEffect(() => {
+    //     console.log(route.params["currentLevel"]);
+    // }, [])
+
+    const handleClaim = (val) => {
+        setIsCalimed(true)
+        navigation.navigate({name: 'SavingsDashboard', params: {currentLevel: route.params["currentLevel"], levelInformation: route.params["levelInformation"], land: land }})
+    }
+
     const onPress = (p) => {
         setLand(p)
         modaldRef.current.onPress()
@@ -26,9 +36,9 @@ const Scenario = ({
     return(
         <View>
             <View>
-                <LevelCompleteModal ref={modaldRef} land = {land} />
+                <LevelCompleteModal ref={modaldRef} land = {land} handleClaim = {handleClaim} />
             </View>
-            <Header level = {"Level 1"} chapterTitle = {"Savings"} chapterLine = {"To save or not to save"}/>
+            <Header level = {route.params["levelInformation"][route.params["currentLevel"]-1]["level"]} chapterTitle = {route.params["levelInformation"][route.params["currentLevel"]-1]["title"]} chapterLine = {route.params["levelInformation"][route.params["currentLevel"]-1]["chapterLine"]}/>
             <View style = {styles.container}>
                 <View style = {styles.inRow}>
                     <Svg

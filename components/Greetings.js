@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { NeuButton } from 'react-native-neu-element'
 import Header from './Header';
-import Svg, { Circle, Path } from "react-native-svg"
 import Pig from '../assets/pig.svg'
 import Three from '../assets/threeNo.svg'
 
@@ -43,7 +42,7 @@ const Greetings = ({
                 width={wp("65%")}
                 height={hp("8%")}
                 borderRadius={30}
-                onPress = {()=> {navigation.navigate('CollectingCoins')}}
+                onPress = {()=> {navigation.navigate( { name: 'CollectingCoins', params: {currentLevel: route.params["currentLevel"], levelInformation: route.params["levelInformation"]}} )}}
             >
                 <Text style = {styles.buttonText}>Let's go!</Text>
             </NeuButton>

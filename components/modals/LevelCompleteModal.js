@@ -13,6 +13,11 @@ const LevelCompleteModal = forwardRef((props, ref) => {
   }));
 
 
+  const onPress = () => {
+    setModalVisible(!modalVisible)
+    props.handleClaim(true)
+  }
+
   return (
     <Modal
       animationType="slide"
@@ -56,7 +61,7 @@ const LevelCompleteModal = forwardRef((props, ref) => {
           </View>
         </View>
         <Pressable
-          onPress={() => setModalVisible(!modalVisible)}
+          onPress={onPress}
           style={styles.goButton}
         >
           <Text style={{ fontWeight: "700" }}>Claim!</Text>
@@ -117,7 +122,7 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 3, width: 1 },
     shadowRadius: 4,
     shadowOpacity: 0.3,
-    bottom: 205,
+    bottom: 180,
   },
 });
 

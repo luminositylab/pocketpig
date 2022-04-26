@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity, Pressable} from "react-native";
 import { AVATAR } from "../assets";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CongratsModal from "./modals/CongratsModal";
 import AvatarImg from "../assets/avatar.svg";
 import SettingImg from "../assets/setting.svg";
@@ -13,88 +13,100 @@ import CubeImg from "../assets/cube.svg";
 
 const Home = ({navigation}) => {
 
-  const [currentLevel, setCurrentLevel] = useState(1);
-  const [levelInformation, setLevelInformation] = useState([
-    {
-      level: "Level 1",
-      chapterLine:"To save or not to save",
-      title: 'savings',
-      definitionQuestion: "What is saving ?",
-      definition1: "Saving is when you do not spend your money straight away, and instead save it so you can spend it on something even better later!",
-      definition2: "Usually people put their savings in a bank account, to keep the money safe until they have enough to buy what they want.",
-      buttonText: "Got it!",
-      isReady: "Ready to move on?",
-      greetings: {
-          greetingHeader: "Wow, great work!",
-          greetingPara1: "You are really getting the hag of this.",
-          greetingPara2: "You have unlocked a mini game, go ahead and try it out to earn some rewards!"
-      },
-      mcq: [
+  // const [currentLevel, setCurrentLevel] = useState(1);
+  // const [levelInformation, setLevelInformation] = useState([
+  //   {
+  //     levelNo: 1,
+  //     level: "Level 1",
+  //     chapterLine:"To save or not to save",
+  //     title: 'savings',
+  //     definitionQuestion: "What is saving ?",
+  //     definition1: "Saving is when you do not spend your money straight away, and instead save it so you can spend it on something even better later!",
+  //     definition2: "Usually people put their savings in a bank account, to keep the money safe until they have enough to buy what they want.",
+  //     buttonText: "Got it!",
+  //     isReady: "Ready to move on?",
+  //     greetings: {
+  //         greetingHeader: "Wow, great work!",
+  //         greetingPara1: "You are really getting the hag of this.",
+  //         greetingPara2: "You have unlocked a mini game, go ahead and try it out to earn some rewards!"
+  //     },
+  //     mcq: [
 
-        {
-            question: 'So, What is saving?',
-            answerOptions: [
-                {
-                    key: 'key1',
-                    text: 'Using your money to buy goods and services',
-                    ans: 'wrong'
-                },
-                {
-                    key: 'key2',
-                    text: 'Putting your money away so you can spend it later',
-                    ans: 'right'
-                },
-                {
-                    key: 'key3',
-                    text: 'Finding a $5 bill while going to school',
-                    ans: 'wrong'
-                },
-            ]
-        },
-        {
-            question: 'Why is savings important?',
-            answerOptions: [
-                {
-                    key: 'key1',
-                    text: "I don't want to save as it is not important to save",
-                    ans: 'wrong'
-                },
-                {
-                    key: 'key2',
-                    text: 'So you can have money for future purchases or emergencies',
-                    ans: 'right'
-                },
-                {
-                    key: 'key3',
-                    text: 'So you can have more money in your bank account',
-                    ans: 'wrong'
-                },
-            ]
-        },
-        {
-            question: 'What is correct example of saving?',
-            answerOptions: [
-                {
-                    key: 'key1',
-                    text: 'Spending all your allowance right away',
-                    ans: 'wrong'
-                },
-                {
-                    key: 'key2',
-                    text: 'Putting aside some of your allowance over time',
-                    ans: 'wrong'
-                },
-                {
-                    key: 'key3',
-                    text: 'Giving some of your allowance to your friends',
-                    ans: 'right'
-                },
-            ]
-        }
+  //       {
+  //           question: 'So, What is saving?',
+  //           answerOptions: [
+  //               {
+  //                   key: 'key1',
+  //                   text: 'Using your money to buy goods and services',
+  //                   ans: 'wrong'
+  //               },
+  //               {
+  //                   key: 'key2',
+  //                   text: 'Putting your money away so you can spend it later',
+  //                   ans: 'right'
+  //               },
+  //               {
+  //                   key: 'key3',
+  //                   text: 'Finding a $5 bill while going to school',
+  //                   ans: 'wrong'
+  //               },
+  //           ]
+  //       },
+  //       {
+  //           question: 'Why is savings important?',
+  //           answerOptions: [
+  //               {
+  //                   key: 'key1',
+  //                   text: "I don't want to save as it is not important to save",
+  //                   ans: 'wrong'
+  //               },
+  //               {
+  //                   key: 'key2',
+  //                   text: 'So you can have money for future purchases or emergencies',
+  //                   ans: 'right'
+  //               },
+  //               {
+  //                   key: 'key3',
+  //                   text: 'So you can have more money in your bank account',
+  //                   ans: 'wrong'
+  //               },
+  //           ]
+  //       },
+  //       {
+  //           question: 'What is correct example of saving?',
+  //           answerOptions: [
+  //               {
+  //                   key: 'key1',
+  //                   text: 'Spending all your allowance right away',
+  //                   ans: 'wrong'
+  //               },
+  //               {
+  //                   key: 'key2',
+  //                   text: 'Putting aside some of your allowance over time',
+  //                   ans: 'wrong'
+  //               },
+  //               {
+  //                   key: 'key3',
+  //                   text: 'Giving some of your allowance to your friends',
+  //                   ans: 'right'
+  //               },
+  //           ]
+  //       }
     
-      ]
-    }
-  ]);
+  //     ]
+  //   }
+  // ]);
+
+  // const handleCurrentLevel = () => {
+  //   console.log("Inside handleCurrentLevel");
+  //   setCurrentLevel((x) => x+1);
+
+  // }
+  
+  // useEffect(() => {
+  //   console.log(currentLevel);
+  //   console.log("home re-rendered");
+  // }, [currentLevel])
 
   const today = new Date().toLocaleDateString();
   const modaldRef = useRef();
@@ -155,18 +167,9 @@ const Home = ({navigation}) => {
             style={{ width: 50, height: 40 }}
           ></Image>
         </TouchableOpacity>
-        <Image
-          source={require("../assets/pig.png")}
-          style={{ width: 40, height: 40 }}
-        ></Image>
-        <Image
-          source={require("../assets/chart.png")}
-          style={{ width: 40, height: 40 }}
-        ></Image>
-
         <BadgeImg></BadgeImg>
         <PigActiveImg></PigActiveImg>
-        <StatsImg onPress = {()=> {navigation.navigate({name: 'RenderLevelMap', params: {currentLevel: currentLevel, levelInformation: levelInformation}})}}></StatsImg>
+        <StatsImg onPress = {()=> {navigation.navigate({name: 'RenderLevelMap'})}}></StatsImg>
       </View>
     </View>
   );
