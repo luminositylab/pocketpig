@@ -406,7 +406,7 @@ export default class CollectingCoins extends PureComponent {
         <Text style={[{marginBottom: hp('0%'), fontWeight: '100', fontSize: 15}, this.state.secondHistory >=0 ? {color: '#3C885E'} : {color: '#FC8476'}]}>
           {this.state.secondHistory == 0 ? null : '$'+this.state.secondHistory.toFixed(2)}
         </Text>
-        <Text style={[{marginBottom: hp('7%'), fontWeight: '100', fontSize: 15}, this.state.thirdHistory >=0 ? {color: '#3C885E'} : {color: '#FC8476'}]}>
+        <Text style={[{marginBottom: hp('4%'), fontWeight: '100', fontSize: 15}, this.state.thirdHistory >=0 ? {color: '#3C885E'} : {color: '#FC8476'}]}>
           {this.state.thirdHistory == 0 ? null : '$'+this.state.thirdHistory.toFixed(2)}
         </Text>
         <TouchableOpacity onPress={() => {
