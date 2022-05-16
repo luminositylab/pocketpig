@@ -10,13 +10,25 @@ import CollectingCoins from "./components/Level1Game/CollectingCoins";
 import LevelQuestions from "./components/LevelQuestions";
 import Greetings from "./components/Greetings";
 import Scenario from "./components/Scenario";
+import ARScreen from "./components/ARScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <Text>Pocket Pig is ready for development! :)</Text> */}
+    <ARScreen />
+    
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    marginTop: 0,
+  },
+});
+{/*<View style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={Home} />
@@ -30,14 +42,4 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    marginTop: 0,
-  },
-});
+  </View>*/}
