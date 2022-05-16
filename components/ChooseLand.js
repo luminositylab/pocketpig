@@ -8,11 +8,19 @@ const ChooseLand = ({
     onPress,
 }) => (
     <View style = {styles.container}>
-        <TouchableOpacity key="Plant" style={styles.stylePlant} onPress = {() => onPress('Plant')}>
+        <TouchableOpacity key="Plant" style={styles.stylePlant} onPress = {() => 
+            {    
+                onPress('Plant')
+            }
+        }>
             <Plant style={{top: 30, left: 35}}/>
         </TouchableOpacity>
         <Text style = {styles.styleText}>OR</Text>
-        <TouchableOpacity key="Pond" style={styles.stylePlant} onPress = {() => onPress('Pond')}>
+        <TouchableOpacity key="Pond" style={styles.stylePlant} onPress = {() => 
+            {
+                   onPress('Pond')
+            }
+        }>
             <Pond style={{top: 10, left: 12}}/>
         </TouchableOpacity>
     </View>

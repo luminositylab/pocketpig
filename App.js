@@ -10,25 +10,12 @@ import CollectingCoins from "./components/Level1Game/CollectingCoins";
 import LevelQuestions from "./components/LevelQuestions";
 import Greetings from "./components/Greetings";
 import Scenario from "./components/Scenario";
-import ARScreen from "./components/ARScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <ARScreen />
-    
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    marginTop: 0,
-  },
-});
-{/*<View style={styles.container}>
+    <View style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={Home} />
@@ -42,4 +29,15 @@ const styles = StyleSheet.create({
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
-  </View>*/}
+  </View>
+    
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    marginTop: 0,
+  },
+});

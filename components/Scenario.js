@@ -26,7 +26,7 @@ const Scenario = ({
     return(
         <View>
             <View>
-                <LevelCompleteModal ref={modaldRef} land = {land} />
+                <LevelCompleteModal ref={modaldRef} land = {land}/>
             </View>
             <Header level = {"Level 1"} chapterTitle = {"Savings"} chapterLine = {"To save or not to save"}/>
             <View style = {styles.container}>
