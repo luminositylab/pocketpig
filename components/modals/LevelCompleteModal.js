@@ -1,7 +1,14 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import React, {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from "react";
 import { StyleSheet, Text, View, Pressable, Modal, Button } from "react-native";
-import PlantSVG from '../../assets/plant.svg'
-import PondSVG from '../../assets/pond.svg'
+import PlantSVG from "../../assets/plant.svg";
+import PondSVG from "../../assets/pond.svg";
+import CafeSVG from "../../assets/cafe.svg";
+import BondSVG from "../../assets/bond.svg";
 import ModalThreeCoin from "../../assets/modal-three-coin.svg";
 
 const LevelCompleteModal = forwardRef((props, ref) => {
@@ -12,6 +19,10 @@ const LevelCompleteModal = forwardRef((props, ref) => {
     onPress: () => setModalVisible(true),
   }));
 
+  const onPress = () => {
+    setModalVisible(!modalVisible);
+    props.handleClaim(true);
+  };
 
   return (
     <Modal
@@ -25,40 +36,40 @@ const LevelCompleteModal = forwardRef((props, ref) => {
     >
       <View style={styles.genericDisplay}>
         <View style={styles.modalStyle}>
-          {
-            props.land === "Plant" && <PlantSVG width = {70} height = {70} />
-          }
-          {
-            props.land === "Pond" && <ModalThreeCoin/>
-          }
+          {props.land === "Plant" && <PlantSVG width={70} height={70} />}
+          {props.land === "Pond" && <ModalThreeCoin />}
+          {props.land === "Cafe" && <CafeSVG width={70} height={70} />}
+          {props.land === "Bond" && <BondSVG width={70} height={70} />}
           {/* <Text style={styles.pointsEarned}>x{lan}</Text> */}
           <View>
-            <Text style={styles.modalText}>You have completed Level 1!</Text>
+            <Text style={styles.modalText}>
+              You have completed Level {props.level}!
+            </Text>
             <View style={styles.line}></View>
-            {props.land === 'Plant' && <View>  
+            {props.land === "Plant" && (
+              <View>
                 <Text style={{ marginBottom: 20, fontSize: 18 }}>
-                    You have earned the Plant from the mini game.
+                  You have earned the Plant from the mini game.
                 </Text>
                 <Text style={{ marginTop: 10, marginBottom: 60, fontSize: 18 }}>
-                Next time,  put your savings knowledge to the test and save up your coins to earn a bigger reward!
+                  Next time, put your savings knowledge to the test and save up
+                  your coins to earn a bigger reward!
                 </Text>
-            </View>}
-            {
-              props.land === "Pond" && <View>  
+              </View>
+            )}
+            {props.land === "Pond" && (
+              <View>
                 <Text style={{ marginBottom: 20, fontSize: 18 }}>
-                    Great choice, now next level you will unlock the park!
+                  Great choice, now next level you will unlock the park!
                 </Text>
                 <Text style={{ marginTop: 10, marginBottom: 60, fontSize: 18 }}>
-                    Now you're ready for level 2.
+                  Now you're ready for level 2.
                 </Text>
-              </View> 
-            }
+              </View>
+            )}
           </View>
         </View>
-        <Pressable
-          onPress={() => setModalVisible(!modalVisible)}
-          style={styles.goButton}
-        >
+        <Pressable onPress={onPress} style={styles.goButton}>
           <Text style={{ fontWeight: "700" }}>Claim!</Text>
         </Pressable>
       </View>
@@ -117,7 +128,7 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 3, width: 1 },
     shadowRadius: 4,
     shadowOpacity: 0.3,
-    bottom: 205,
+    bottom: 180,
   },
 });
 
